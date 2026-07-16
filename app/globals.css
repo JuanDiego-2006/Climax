@@ -1,0 +1,639 @@
+@import "tailwindcss";
+
+:root {
+  --green-700: #15803d;
+  --green-500: #22c55e;
+  --green-800: #166534;
+  --ink: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #ffffff;
+  --font-body: "DM Sans", "Segoe UI", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient(180deg, var(--green-700) 0%, var(--green-500) 100%);
+  color: #fff;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 920px;
+  margin: 0 auto 1.35rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.brand-sub {
+  margin: 0.1rem 0 0;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.tab.active {
+  background: #fff;
+  color: var(--green-800);
+}
+
+.search {
+  display: flex;
+  gap: 0.65rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.search-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+  padding: 0.15rem 1rem;
+  min-height: 48px;
+}
+
+.search-field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 0.98rem;
+  min-width: 0;
+}
+
+.search-field input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.search-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.search-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.search-btn:disabled,
+.chip:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  max-width: 720px;
+  margin: 1rem auto 0;
+}
+
+.chip {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.chip:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.content {
+  flex: 1;
+  padding: 1.5rem 1.25rem 2.5rem;
+  background: #fff;
+}
+
+.panel {
+  max-width: 720px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  padding: 2rem 1.5rem;
+  background: #fff;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  min-height: 260px;
+  justify-content: center;
+}
+
+.empty p {
+  margin: 0;
+  max-width: 28rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.consulta-resultado {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.clima-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1rem;
+  border-radius: 1.25rem;
+  padding: 1.4rem 1.5rem 1.5rem;
+  color: #fff;
+  background: linear-gradient(135deg, #fb923c 0%, #ef4444 55%, #dc2626 100%);
+  box-shadow: 0 10px 30px rgba(220, 80, 40, 0.22);
+}
+
+.clima-hero.nivel-medio {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 60%, #d97706 100%);
+  box-shadow: 0 10px 30px rgba(217, 119, 6, 0.2);
+}
+
+.clima-hero.nivel-optimo {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 55%, #059669 100%);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.22);
+}
+
+.clima-hero.nivel-bajo {
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 55%, #0284c7 100%);
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+}
+
+.clima-ubicacion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.55rem;
+  font-size: 0.85rem;
+  opacity: 0.92;
+}
+
+.clima-hero-left h2 {
+  margin: 0 0 0.3rem;
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.clima-desc {
+  margin: 0 0 1rem;
+  opacity: 0.92;
+  font-size: 0.98rem;
+}
+
+.clima-riesgo {
+  display: inline-block;
+  background: #fff;
+  color: #dc2626;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.clima-riesgo.nivel-medio {
+  color: #d97706;
+}
+
+.clima-riesgo.nivel-optimo {
+  color: #059669;
+}
+
+.clima-riesgo.nivel-bajo {
+  color: #0284c7;
+}
+
+.clima-hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.clima-temp {
+  margin: 0.25rem 0;
+  font-size: clamp(3rem, 8vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.clima-hero-right time {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.alerta-agricola {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #fecaca;
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+}
+
+.alerta-agricola.nivel-optimo {
+  border-color: #bbf7d0;
+}
+
+.alerta-agricola.nivel-medio {
+  border-color: #fde68a;
+}
+
+.alerta-agricola.nivel-bajo {
+  border-color: #bae6fd;
+}
+
+.alerta-icono {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: #f43f5e;
+}
+
+.alerta-icono.nivel-optimo {
+  background: #22c55e;
+}
+
+.alerta-icono.nivel-medio {
+  background: #f59e0b;
+}
+
+.alerta-icono.nivel-bajo {
+  background: #38bdf8;
+}
+
+.alerta-agricola h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e11d48;
+}
+
+.alerta-agricola.nivel-optimo h3 {
+  color: #15803d;
+}
+
+.alerta-agricola.nivel-medio h3 {
+  color: #d97706;
+}
+
+.alerta-agricola.nivel-bajo h3 {
+  color: #0284c7;
+}
+
+.alerta-agricola p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.detalle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.detalle-card {
+  background: #fff;
+  border: 1px solid #e8eee9;
+  border-radius: 1rem;
+  padding: 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  box-shadow: 0 1px 2px rgba(15, 40, 25, 0.03);
+}
+
+.detalle-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 0.7rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.45rem;
+}
+
+.detalle-icon.sensacion {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.detalle-icon.humedad {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.detalle-icon.viento {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.detalle-icon.visibilidad {
+  background: #ecfeff;
+  color: #0d9488;
+}
+
+.detalle-card strong {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.detalle-card span:last-child {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.header-hist {
+  background: linear-gradient(180deg, #14532d 0%, #166534 45%, #15803d 100%);
+  padding-bottom: 1.75rem;
+}
+
+.hist-hero {
+  max-width: 820px;
+  margin: 0.35rem auto 0;
+}
+
+.hist-hero h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.7rem, 4vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hist-hero p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.content-hist {
+  background: #f8faf9;
+  padding-top: 1.25rem;
+}
+
+.hist-lista {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.hist-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e8eee9;
+  border-radius: 1rem;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 1px 2px rgba(15, 40, 25, 0.04);
+}
+
+.hist-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.hist-icon.nivel-alto,
+.hist-icon.nivel-critico,
+.alerta-icono.nivel-alto,
+.alerta-icono.nivel-critico {
+  background: #f43f5e;
+}
+
+.hist-icon.nivel-optimo {
+  background: #22c55e;
+}
+
+.hist-icon.nivel-medio {
+  background: #f59e0b;
+}
+
+.hist-icon.nivel-bajo {
+  background: #38bdf8;
+}
+
+.hist-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.hist-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.hist-row h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.hist-badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.hist-badge.nivel-alto,
+.hist-badge.nivel-critico {
+  background: #ffe4e6;
+  color: #e11d48;
+}
+
+.hist-badge.nivel-optimo {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.hist-badge.nivel-medio {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.hist-badge.nivel-bajo {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.hist-alerta {
+  margin: 0 0 0.7rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.hist-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.15rem;
+  color: #6b7280;
+  font-size: 0.82rem;
+}
+
+.hist-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .header-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .tab {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .clima-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .clima-hero-right {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .clima-temp {
+    font-size: 2.6rem;
+  }
+
+  .hist-card {
+    padding: 1rem;
+  }
+
+  .hist-meta {
+    gap: 0.55rem 0.85rem;
+  }
+}
