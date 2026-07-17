@@ -1,4 +1,4 @@
-# Clima Seguro Agro (Frontend)
+# Climax (Frontend)
 
 Aplicación frontend en **Next.js + TypeScript** para consultar clima y alertas agrícolas en Chiapas.
 

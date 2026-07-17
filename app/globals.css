@@ -8,7 +8,7 @@
   --muted: #6b7280;
   --border: #e5e7eb;
   --bg: #ffffff;
-  --font-body: "DM Sans", "Segoe UI", sans-serif;
+  --font-body: "Segoe UI", Arial, sans-serif;
 }
 
 @theme inline {

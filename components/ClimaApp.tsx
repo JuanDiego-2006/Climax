@@ -45,7 +45,7 @@ export default function ClimaApp() {
               <IconLeaf />
             </span>
             <div>
-              <p className="brand-title">Clima Seguro Agro</p>
+              <p className="brand-title">Climax</p>
               <p className="brand-sub">Sistema de alertas · Chiapas</p>
             </div>
           </div>
